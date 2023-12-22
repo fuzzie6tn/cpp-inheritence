@@ -1,8 +1,60 @@
-/*
-Define a custom exception class named SecureArray
-having array of int type as single data member and let the insert
-and delete functions of this class to throw OutBoundException
-(your own defined exception class) if the array is already full
-or already empty, respectively. In the main() function, write a try-catch
-block to handle this type of exception.
-*/
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+class OutBoundException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Out of bounds exception.";
+    }
+};
+
+class SecureArray {
+private:
+    static const int maxSize = 5;
+    int array[maxSize];
+    int size;
+
+public:
+    SecureArray() : size(0) {}
+
+    void insert(int value) {
+        if (size >= maxSize) {
+            throw OutBoundException();
+        }
+        array[size++] = value;
+    }
+
+    void remove() {
+        if (size <= 0) {
+            throw OutBoundException();
+        }
+        --size;
+    }
+
+    void display() const {
+        std::cout << "Array: ";
+        for (int i = 0; i < size; ++i) {
+            std::cout << array[i] << " ";
+        }
+        cout << std::endl;
+    }
+};
+
+int main() {
+    try {
+        SecureArray secureObject;
+
+        secureObject.insert(42);
+        secureObject.display();
+
+        secureObject.remove();
+        secureObject.display();
+
+        secureObject.remove(); 
+        secureObject.display(); 
+    } catch (const OutBoundException& e) {
+        cout << "Caught Exception: " << e.what() << endl;
+    }
+
+    return 0;
+}
