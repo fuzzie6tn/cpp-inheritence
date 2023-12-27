@@ -54,5 +54,5 @@ int main() {
   std::cout << std::endl;
   double average = calculateAverage(filename);
   std::cout << "Average: " << average << std::endl;
-  return 0;
+  
 }
