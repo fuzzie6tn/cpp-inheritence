@@ -20,6 +20,7 @@ void displayFileContent(const std::string & filename) {
   }
 }
 
+
 double calculateAverage(const std::string & filename) {
   std::ifstream file(filename);
   double sum = 0.0;
