@@ -61,6 +61,7 @@ int main(){
         shapes[i]->display();
         cout << "Area: " << shapes[i]->calculateArea()<<endl;
     }
+    
     for (int i = 0; i < size; ++i){
         delete shapes[i];
     }
