@@ -23,7 +23,7 @@ class Divisor{
                 throw DivideByZeroException();
             }
             else{
-            return dividend/divisor;
+            return dividend / divisor;
             }
         } 
 
