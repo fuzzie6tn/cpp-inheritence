@@ -2,10 +2,6 @@
 #include<string>
 using namespace std;
 
-#include<iostream>
-#include<string>
-using namespace std;
-
 class DivideByZeroException : public exception {
     public:
     const char* what() const noexcept override {
